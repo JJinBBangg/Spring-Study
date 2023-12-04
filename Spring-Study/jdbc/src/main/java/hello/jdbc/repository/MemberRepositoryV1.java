@@ -7,6 +7,8 @@ import org.springframework.jdbc.support.JdbcUtils;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -23,7 +25,7 @@ public class MemberRepositoryV1 {
 
     public Member save(Member member) throws SQLException {
         String sql = "insert into member(member_id, money) values (?, ?)";
-
+        new ArrayList<>();
         Connection con = null;
         PreparedStatement pstmt = null;
         try {
@@ -31,6 +33,7 @@ public class MemberRepositoryV1 {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, member.getMemberId());
             pstmt.setInt(2, member.getMoney());
+ 
             pstmt.executeUpdate();
             return member;
         } catch (SQLException e) {
