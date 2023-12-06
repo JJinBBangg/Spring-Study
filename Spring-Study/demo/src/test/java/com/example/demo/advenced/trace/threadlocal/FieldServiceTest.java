@@ -22,6 +22,7 @@ public class FieldServiceTest {
         Thread threadB = new Thread(userB);
         threadB.setName("Thread-B");
 
+
         threadA.start();
 //        sleep(2000); // 동시성문제 없도록 설계
         threadB.start();
@@ -34,9 +35,8 @@ public class FieldServiceTest {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
     }
 
 }
